@@ -17,7 +17,7 @@ program
   .arguments('<file...>')
   .option('-c, --convert', 'Convert to PNG file named <FILENAME>.png')
   .option('-t, --text', 'Extract text content to <FILENAME>.txt')
-  .option('-f, --font', 'Extract font information to <FILENAME>.txt (triggers -t option)')
+  .option('-f, --font', 'Extract font information to <FILENAME>.txt\n\t\t(triggers -t option)')
   .option('-o, --open', 'Preview file after conversion (triggers -c option)')
   .action(processFiles)
   .parse(process.argv);

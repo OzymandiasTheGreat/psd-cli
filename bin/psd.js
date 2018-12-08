@@ -55,16 +55,17 @@ function extractTextFromFile(filepath, psdPromise, cb, includeFont) {
         if (typeof t.text !== 'string') {
           return;
         }
-        fileString += '\n\n' + '---';
-        fileString += '\n' + t.path.join(' > ');
+        var pathString = t.path.join(' >> ')
+        fileString += '\n\n' + '-'.repeat(pathString.length + 2);
+        fileString += '\n- ' + pathString;
         if (includeFont) {
-          fileString += '\n\nFont Family: ' + t.font.family;
-          fileString += '\nFont Sizes: ' + t.font.sizes.map(function(size) {
+          fileString += '\n-\n- Font Family: ' + t.font.family;
+          fileString += '\n- Font Sizes: ' + t.font.sizes.map(function(size) {
             return size + 'px';
           }).join(', ');
-          fileString += '\nFont Colors: ' + t.font.colors.join(', ');
+          fileString += '\n- Font Colors: ' + t.font.colors.join(', ');
         }
-        fileString += '\n' + '---';
+        fileString += '\n' + '-'.repeat(pathString.length + 2);
         fileString += '\n\n' + t.text.replace(/\r/g, '\n');
       });
     });
